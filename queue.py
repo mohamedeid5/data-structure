@@ -44,11 +44,6 @@ queue.enqueue(2)
 
 queue.dequeue()
 queue.dequeue()
-queue.dequeue()
-queue.dequeue()
 
-print(queue.arr)
-print(queue.front)
-print(queue.rear)
-print('print queue')
+
 queue.printQueue()
