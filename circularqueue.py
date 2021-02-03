@@ -1,5 +1,3 @@
-# main file
-
 class Queue:
 
     def __init__(self):
