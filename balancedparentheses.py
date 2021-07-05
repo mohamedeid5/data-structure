@@ -11,24 +11,23 @@ def pair(open, close):
     else:
         return False
 
-
 def balanced(exp):
     stack = Stack()
-    # get expression
     for i in range(len(exp)):
-        # chek if the expression has a open bracket
+        # if finds any open bracktes add it to stack
         if exp[i] == '(' or exp[i] == '{' or exp[i] == '[':
-            # then put the expression
             stack.push(exp[i])
-            # check if it has a close bracket
         elif exp[i] == ')' or exp[i] == '}' or exp[i] == ']':
-            # if stack is empty, it means no open brackets so return false
+            # if stack is empty then there's no open brackets then it is not balanced
             if stack.isEmpty():
                 return False
-            # check if the top value equals
-            elif not pair(stack.topValue(), exp[i]):
+            # if open bracktes is not balanced return false
+            elif not pair(stack.top_value(), exp[i]):
                 return False
-            stack.pop()  # if exists then remove last one
+            stack.pop() # if exists then remove last one
+        else: 
+            return False
+            
     if stack.isEmpty():
         return True
     else:

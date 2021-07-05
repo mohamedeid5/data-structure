@@ -1,54 +1,57 @@
-class Queue:
+# main
 
-    def __init__(self):
-        self.capacity = 5
-        self.arr = []
-        self.front = self.rear = -1
-
+class CircularQueue():
+    
+    front = rear = -1
+    capcity = 5
+    arr = [None] * capcity
+    
     def enqueue(self, val):
         if self.isFull():
-            print('queue is full!')
+            print('queue is full')
+            return
         elif self.isEmpty():
-            self.rear = self.front = 0
+            self.front = self.rear = 0
         else:
-            self.rear = (self.rear + 1) % self.capacity
-        self.arr.append(val)
-
+            self.rear = (self.rear + 1) % self.capcity
+        self.arr[self.rear] = val
+        
     def dequeue(self):
         if self.isEmpty():
-            return
+            print('queue is empty')
         elif self.front == self.rear:
             self.front = self.rear = -1
         else:
-            self.front = (self.front + 1) % self.capacity
-
+            self.front = (self.front + 1) % self.capcity
+    
     def isEmpty(self):
-        if self.front == -1 and self.rear == -1:
+        if self.rear == -1 and self.rear == -1:
             return True
         else:
             return False
-
+        
     def isFull(self):
-        if (self.rear + 1) % self.capacity == self.front:
+        if (self.rear + 1) % self.capcity == self.front:
             return True
         else:
             return False
-
-    def front_val(self):
+        
+    def front_value(self):
+        if self.isEmpty():
+            return 'queue is empty'
         return self.arr[self.front]
+    
+    def print_queue(self):
+        while not self.isEmpty():
+            print(self.front_value())
+            self.dequeue()
 
-    def printQueue(self):
-        for i in range(self.front, self.rear + 1):
-            print(self.arr[i])
+    
 
-
-queue = Queue()
-queue.enqueue(1)
-queue.enqueue(2)
-queue.enqueue(3)
-queue.enqueue(4)
-queue.enqueue(5)
+    
+qu = CircularQueue()
 
 
-queue.printQueue()
+qu.print_queue()
 
+    
