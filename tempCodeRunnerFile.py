@@ -1,1 +1,3 @@
-2
+print('------revrese------')
+
+db.reverse_display()
