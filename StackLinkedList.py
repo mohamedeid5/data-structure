@@ -41,4 +41,10 @@ class Stack():
             return True
         else:
             return False
+    
+    def print_stack(self):
+        temp = self.head
+        while temp:
+            print(temp.data)
+            temp = temp.next
         
