@@ -56,20 +56,3 @@ class Tree():
         return self.minHelper(self.root)
                          
 
-
-tree = Tree()
-tree.add(2)
-tree.add(5)
-tree.add(10)
-tree.add(15)
-tree.add(34)
-tree.add(1)
-tree.add(29)
-tree.add(290)
-tree.add(1000)
-tree.add(23)
-tree.add(0)
-
-
-print(tree.max())
-print(tree.min())
