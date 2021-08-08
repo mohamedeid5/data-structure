@@ -2,9 +2,9 @@
 
 class Queue():
     
-    arr = []
+    capcity = 1000
+    arr = [None] * capcity
     front = rear = -1
-    capcity = 5
     
     def enqueue(self, val):
         if self.isFull():
@@ -13,7 +13,7 @@ class Queue():
             self.front = self.rear = 0
         else:
             self.rear += 1
-        self.arr.append(val)
+        self.arr[self.rear] = val
         
     def dequeue(self):
         if self.isEmpty():
@@ -44,15 +44,7 @@ class Queue():
         for i in range(self.front, self.rear + 1):
             print(self.arr[i])
     
-qu = Queue()
-
-qu.enqueue(1)
-qu.enqueue(2)
-qu.enqueue(3)
-qu.enqueue(4)
-qu.enqueue(5)
 
 
 
-qu.print_queue()
     

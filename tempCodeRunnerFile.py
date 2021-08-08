@@ -1,1 +1,1 @@
-return
+queue.dequeue()

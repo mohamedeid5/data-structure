@@ -1,5 +1,6 @@
-#main
-
+# main
+from Queue import Queue
+    
 class Node():
     
     def __init__(self, data):
@@ -54,5 +55,61 @@ class Tree():
     def min(self):
         
         return self.minHelper(self.root)
-                         
-
+    
+    def getHeightHelper(self, temp):
+        
+        if temp == None:
+            return -1
+        
+        leftSubTree = self.getHeightHelper(temp.left)
+        rightSubTree = self.getHeightHelper(temp.right)        
+    
+        return max(leftSubTree, rightSubTree) + 1
+    
+    def getHeight(self):
+        
+        if self.root == None:
+            return -1
+        else:
+            return self.getHeightHelper(self.root)
+        
+    def display_level_order(self):
+        
+        if self.root == None:
+            return
+        
+        
+        queue = Queue()
+        
+        queue.enqueue(self.root)
+                
+        while not queue.isEmpty():
+            
+            current = queue.front_value()
+           
+            queue.dequeue()
+            
+            print(current.data)
+            
+            if current.left != None:
+                queue.enqueue(current.left)
+            if current.right != None:
+                queue.enqueue(current.right)
+                
+    def preorderHelper(self, temp):
+        
+        if temp == None:
+            return
+        
+        print(temp.data)
+        
+        self.preorderHelper(temp.left)
+        self.preorderHelper(temp.right)
+        
+                
+    def preorder(self):
+        
+        if self.root == None:
+            return
+        
+        return self.preorderHelper(self.root)
