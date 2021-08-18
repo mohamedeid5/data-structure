@@ -1,6 +1,6 @@
-# main
 from Queue import Queue
     
+
 class Node():
     
     def __init__(self, data):
@@ -101,10 +101,18 @@ class Tree():
         if temp == None:
             return
         
-        print(temp.data)
+        #preorder
+        #print(temp.data)
         
         self.preorderHelper(temp.left)
+        
+        #inorder
+        print(temp.data)
+        
         self.preorderHelper(temp.right)
+        
+        #postorder
+       # print(temp.data)
         
                 
     def preorder(self):
@@ -113,3 +121,32 @@ class Tree():
             return
         
         return self.preorderHelper(self.root)
+
+    def removeHelper(self, root, data):
+        
+        if root == None:
+            return root
+        
+        elif data < root.data:
+            root.left = self.removeHelper(root.left, data)
+            
+        elif data > root.data:
+            root.right = self.removeHelper(root.right, data)
+        
+        else:
+            if root.left == None:
+                temp = root.right
+                del root
+                return temp
+            elif root.right == None:
+                temp = root.left
+                del root
+                return temp
+            else:
+                maxValue = self.maxHelper(root.left)
+                root.data = maxValue
+                root.left = self.removeHelper(root.left, maxValue)
+        return root
+    
+    def remove(self, data):
+        self.root = self.removeHelper(self.root, data)
