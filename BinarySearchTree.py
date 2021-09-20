@@ -62,7 +62,7 @@ class Tree():
             return -1
         
         leftSubTree = self.getHeightHelper(temp.left)
-        rightSubTree = self.getHeightHelper(temp.right)        
+        rightSubTree = self.getHeightHelper(temp.right)
     
         return max(leftSubTree, rightSubTree) + 1
     
@@ -102,12 +102,12 @@ class Tree():
             return
         
         #preorder
-        #print(temp.data)
+        print(temp.data)
         
         self.preorderHelper(temp.left)
         
         #inorder
-        print(temp.data)
+        #print(temp.data)
         
         self.preorderHelper(temp.right)
         
@@ -150,3 +150,5 @@ class Tree():
     
     def remove(self, data):
         self.root = self.removeHelper(self.root, data)
+        
+        
