@@ -76,12 +76,5 @@ class AVlTree():
             return 0
         return self.getHeight(root.left) - self.getHeight(root.right)
     
-tree = AVlTree()
 
-tree.add(10)
-tree.add(20)
-tree.add(30)
-tree.add(40)
-tree.add(50)
-tree.add(60)
 
