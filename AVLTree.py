@@ -55,8 +55,8 @@ class AVlTree():
             
     def leftRotate(self, z):
         
-        y = z.right # 20
-        T2 = y.left # empty
+        y = z.right
+        T2 = y.left
         
         # Perform rotation
         y.left  = z
