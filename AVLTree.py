@@ -25,7 +25,25 @@ class AVlTree():
         root.height = 1 + max(self.getHeight(root.left), self.getHeight(root.right))
         
         balance = self.getBalance(root)
+        
+        # case 1 left left 
+        if balance > 1 and val < root.left.data:
+            return self.rightRotate(root)
+        
+        # case 2 right right 
+        if balance < -1 and val > root.right.data:
+            return self.leftRotate(root)
+        
+        # case 3 left right
+        if balance > 1 and val > root.left.data:
+            root.left = self.leftRotate(root.left)
+            return self.rightRotate(root)
                     
+        # case 4 right left
+        if balance < -1 and val < root.right.data:
+            root.right = self.rightRotate(root.right)
+            return self.leftRotate(root)
+        
         return root
     
     def add(self, val):
@@ -37,8 +55,8 @@ class AVlTree():
             
     def leftRotate(self, z):
         
-        y = z.right
-        T2 = y.left
+        y = z.right # 20
+        T2 = y.left # empty
         
         # Perform rotation
         y.left  = z
